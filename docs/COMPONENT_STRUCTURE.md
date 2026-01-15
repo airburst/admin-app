@@ -6,7 +6,7 @@ The dashboard has been refactored into a well-organized component architecture w
 
 ## Component Hierarchy
 
-```
+```txt
 src/
 ├── components/
 │   └── dashboard/

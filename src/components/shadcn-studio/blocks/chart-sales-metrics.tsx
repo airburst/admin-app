@@ -2,14 +2,12 @@
 
 import {
   BadgePercentIcon,
-  ChartNoAxesCombinedIcon,
-  CirclePercentIcon,
   DollarSignIcon,
   ShoppingBagIcon,
   TrendingUpIcon,
 } from 'lucide-react'
 
-import { Bar, BarChart, Label, Pie, PieChart } from 'recharts'
+import { Label, Pie, PieChart } from 'recharts'
 
 import { Avatar, AvatarFallback } from '@/components/ui/avatar'
 import {
@@ -25,32 +23,6 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart'
-
-const salesPlanPercentage = 54
-const totalBars = 24
-const filledBars = Math.round((salesPlanPercentage * totalBars) / 100)
-
-// Sales chart data
-const salesChartData = Array.from({ length: totalBars }, (_, index) => {
-  const date = new Date(2025, 5, 15)
-
-  const formattedDate = date.toLocaleDateString('en-GB', {
-    day: '2-digit',
-    month: '2-digit',
-    year: 'numeric',
-  })
-
-  return {
-    date: formattedDate,
-    sales: index < filledBars ? 315 : 0,
-  }
-})
-
-const salesChartConfig = {
-  sales: {
-    label: 'Sales',
-  },
-} satisfies ChartConfig
 
 const MetricsData = [
   {
@@ -210,61 +182,6 @@ const SalesMetricsCard = ({ className }: { className?: string }) => {
             </CardFooter>
           </Card>
         </div>
-        <Card className="shadow-none">
-          <CardContent className="grid gap-4 px-4 lg:grid-cols-5">
-            <div className="flex flex-col justify-center gap-6">
-              <span className="text-lg font-semibold">Sales plan</span>
-              <span className="max-lg:5xl text-6xl">
-                {salesPlanPercentage}%
-              </span>
-              <span className="text-muted-foreground text-sm">
-                Percentage profit from total sales
-              </span>
-            </div>
-            <div className="flex flex-col gap-6 text-lg md:col-span-4">
-              <span className="font-medium">Cohort analysis indicators</span>
-              <span className="text-muted-foreground text-wrap">
-                Analyzes the behaviour of a group of users who joined a
-                product/service at the same time. over a certain period.
-              </span>
-              <div className="grid gap-6 md:grid-cols-2">
-                <div className="flex items-center gap-2">
-                  <ChartNoAxesCombinedIcon className="size-6" />
-                  <span className="text-lg font-medium">Open Statistics</span>
-                </div>
-                <div className="flex items-center gap-2">
-                  <CirclePercentIcon className="size-6" />
-                  <span className="text-lg font-medium">Percentage Change</span>
-                </div>
-              </div>
-
-              <ChartContainer
-                config={salesChartConfig}
-                className="h-7.75 w-full"
-              >
-                <BarChart
-                  accessibilityLayer
-                  data={salesChartData}
-                  margin={{
-                    left: 0,
-                    right: 0,
-                  }}
-                  maxBarSize={16}
-                >
-                  <Bar
-                    dataKey="sales"
-                    fill="var(--primary)"
-                    background={{
-                      fill: 'color-mix(in oklab, var(--primary) 10%, transparent)',
-                      radius: 12,
-                    }}
-                    radius={12}
-                  />
-                </BarChart>
-              </ChartContainer>
-            </div>
-          </CardContent>
-        </Card>
       </CardContent>
     </Card>
   )
