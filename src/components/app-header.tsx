@@ -1,25 +1,12 @@
-import { memo, useMemo } from "react";
+import { memo } from "react";
 import { MoonIcon, SunIcon } from "lucide-react";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import ProfileDropdown from "@/components/shadcn-studio/blocks/dropdown-profile";
 import { useTheme } from "@/hooks/use-theme";
 
-const ProfileTrigger = memo(function ProfileTrigger() {
-  return (
-    <Button variant="ghost" size="icon" className="size-9.5">
-      <Avatar className="size-9.5 rounded-md">
-        <AvatarImage src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-1.png" />
-        <AvatarFallback>JD</AvatarFallback>
-      </Avatar>
-    </Button>
-  );
-});
-
 export const AppHeader = memo(function AppHeader() {
   const { theme, toggleTheme } = useTheme();
-
-  const profileTrigger = useMemo(() => <ProfileTrigger />, []);
 
   return (
     <header className="bg-card sticky top-0 z-50 border-b">
@@ -46,7 +33,16 @@ export const AppHeader = memo(function AppHeader() {
             <span className="sr-only">Toggle theme</span>
           </Button>
 
-          <ProfileDropdown trigger={profileTrigger} />
+          <ProfileDropdown
+            trigger={
+              <Button variant="ghost" size="icon" className="size-9.5">
+                <Avatar className="size-9.5 rounded-md">
+                  <AvatarImage src="https://cdn.shadcnstudio.com/ss-assets/avatar/avatar-1.png" />
+                  <AvatarFallback>JD</AvatarFallback>
+                </Avatar>
+              </Button>
+            }
+          />
         </div>
       </div>
     </header>
