@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { LoginForm } from "@/components/login/login-form";
 import { HomeLayout } from "@/components/home/home-layout";
+import { printConsoleArt } from "@/lib/console-art";
 
 export const Route = createFileRoute("/")({ component: Home });
 
@@ -34,3 +35,6 @@ function Home() {
     </HomeLayout>
   );
 }
+
+// Print console art on server startup
+printConsoleArt();
