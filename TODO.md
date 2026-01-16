@@ -1,9 +1,5 @@
 # TODO
 
-## Structure
-
-- Dynamic breadcrumbs, with real links
-
 ## Content
 
 - Data table populated from API (react-query, table)
@@ -12,6 +8,8 @@
 
 - setup better-auth
 - add "remember me" behaviour to login form
+- protect routes and redirect to login
+- SSO?
 
 ## Logos
 

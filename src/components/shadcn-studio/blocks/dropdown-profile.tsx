@@ -7,8 +7,8 @@ import {
   UserIcon,
   UsersIcon,
 } from "lucide-react";
-import type { ReactNode } from "react";
 import { useNavigate } from "@tanstack/react-router";
+import type { ReactNode } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
