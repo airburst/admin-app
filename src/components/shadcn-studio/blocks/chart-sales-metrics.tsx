@@ -1,75 +1,75 @@
-'use client'
+"use client";
 
 import {
   BadgePercentIcon,
   DollarSignIcon,
   ShoppingBagIcon,
   TrendingUpIcon,
-} from 'lucide-react'
+} from "lucide-react";
 
-import { Label, Pie, PieChart } from 'recharts'
+import { Label, Pie, PieChart } from "recharts";
 
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
+import type { ChartConfig } from "@/components/ui/chart";
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
 import {
   Card,
   CardContent,
   CardFooter,
   CardHeader,
   CardTitle,
-} from '@/components/ui/card'
+} from "@/components/ui/card";
 import {
-  type ChartConfig,
   ChartContainer,
   ChartTooltip,
   ChartTooltipContent,
-} from '@/components/ui/chart'
+} from "@/components/ui/chart";
 
 const MetricsData = [
   {
     icons: <TrendingUpIcon className="size-5" />,
-    title: 'Sales trend',
-    value: '$11,548',
+    title: "Sales trend",
+    value: "$11,548",
   },
   {
     icons: <BadgePercentIcon className="size-5" />,
-    title: 'Discount offers',
-    value: '$1,326',
+    title: "Discount offers",
+    value: "$1,326",
   },
   {
     icons: <DollarSignIcon className="size-5" />,
-    title: 'Net profit',
-    value: '$17,356',
+    title: "Net profit",
+    value: "$17,356",
   },
   {
     icons: <ShoppingBagIcon className="size-5" />,
-    title: 'Total orders',
-    value: '248',
+    title: "Total orders",
+    value: "248",
   },
-]
+];
 
 const revenueChartData = [
-  { month: 'january', sales: 340, fill: 'var(--color-january)' },
-  { month: 'february', sales: 200, fill: 'var(--color-february)' },
-  { month: 'march', sales: 200, fill: 'var(--color-march)' },
-]
+  { month: "january", sales: 340, fill: "var(--color-january)" },
+  { month: "february", sales: 200, fill: "var(--color-february)" },
+  { month: "march", sales: 200, fill: "var(--color-march)" },
+];
 
 const revenueChartConfig = {
   sales: {
-    label: 'Sales',
+    label: "Sales",
   },
   january: {
-    label: 'January',
-    color: 'var(--primary)',
+    label: "January",
+    color: "var(--primary)",
   },
   february: {
-    label: 'February',
-    color: 'color-mix(in oklab, var(--primary) 60%, transparent)',
+    label: "February",
+    color: "color-mix(in oklab, var(--primary) 60%, transparent)",
   },
   march: {
-    label: 'March',
-    color: 'color-mix(in oklab, var(--primary) 20%, transparent)',
+    label: "March",
+    color: "color-mix(in oklab, var(--primary) 20%, transparent)",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 const SalesMetricsCard = ({ className }: { className?: string }) => {
   return (
@@ -144,7 +144,7 @@ const SalesMetricsCard = ({ className }: { className?: string }) => {
                   >
                     <Label
                       content={({ viewBox }) => {
-                        if (viewBox && 'cx' in viewBox && 'cy' in viewBox) {
+                        if (viewBox && "cx" in viewBox && "cy" in viewBox) {
                           return (
                             <text
                               x={viewBox.cx}
@@ -167,7 +167,7 @@ const SalesMetricsCard = ({ className }: { className?: string }) => {
                                 Total Profit
                               </tspan>
                             </text>
-                          )
+                          );
                         }
                       }}
                     />
@@ -184,7 +184,7 @@ const SalesMetricsCard = ({ className }: { className?: string }) => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default SalesMetricsCard
+export default SalesMetricsCard;

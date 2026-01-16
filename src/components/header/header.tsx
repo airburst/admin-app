@@ -1,4 +1,5 @@
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
+import { useLocation } from "@tanstack/react-router";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   Breadcrumb,
   BreadcrumbItem,
@@ -6,31 +7,30 @@ import {
   BreadcrumbList,
   BreadcrumbPage,
   BreadcrumbSeparator,
-} from '@/components/ui/breadcrumb'
-import { Button } from '@/components/ui/button'
-import { SidebarTrigger } from '@/components/ui/sidebar'
+} from "@/components/ui/breadcrumb";
+import { Button } from "@/components/ui/button";
+import { SidebarTrigger } from "@/components/ui/sidebar";
 
-import ProfileDropdown from '@/components/shadcn-studio/blocks/dropdown-profile'
-import { useLocation } from '@tanstack/react-router'
+import ProfileDropdown from "@/components/shadcn-studio/blocks/dropdown-profile";
 
 interface HeaderProps {
   breadcrumbs?: Array<{
-    label: string
-    href?: string
-    isCurrentPage?: boolean
-  }>
+    label: string;
+    href?: string;
+    isCurrentPage?: boolean;
+  }>;
 }
 
 export function Header({ breadcrumbs }: HeaderProps) {
-  const { pathname } = useLocation()
+  const { pathname } = useLocation();
 
   // TODO: Breadcrumbs should be dynamic based on route
   const defaultBreadcrumbs = breadcrumbs || [
-    { label: 'Home', href: '/' },
-    { label: 'Dashboard', href: '/dashboard' },
-  ]
+    { label: "Home", href: "/" },
+    { label: "Dashboard", href: "/dashboard" },
+  ];
 
-  const shouldShowSidebarTrigger = pathname === '/dashboard'
+  const shouldShowSidebarTrigger = pathname === "/dashboard";
 
   return (
     <header className="bg-card sticky top-0 z-50 border-b">
@@ -74,5 +74,5 @@ export function Header({ breadcrumbs }: HeaderProps) {
         </div>
       </div>
     </header>
-  )
+  );
 }

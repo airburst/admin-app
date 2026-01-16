@@ -1,48 +1,49 @@
-'use client'
+"use client";
 
-import { Bar, BarChart } from 'recharts'
+import { Bar, BarChart } from "recharts";
 
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
-import { type ChartConfig, ChartContainer } from '@/components/ui/chart'
-import { Separator } from '@/components/ui/separator'
+import type { ChartConfig } from "@/components/ui/chart";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
+import { ChartContainer } from "@/components/ui/chart";
+import { Separator } from "@/components/ui/separator";
 
-import { cn } from '@/lib/utils'
+import { cn } from "@/lib/utils";
 
 // Product reached data
 const productReachChartData = [
-  { month: 'January', reached: 168 },
-  { month: 'February', reached: 305 },
-  { month: 'March', reached: 213 },
-  { month: 'April', reached: 330 },
-  { month: 'May', reached: 305 },
-]
+  { month: "January", reached: 168 },
+  { month: "February", reached: 305 },
+  { month: "March", reached: 213 },
+  { month: "April", reached: 330 },
+  { month: "May", reached: 305 },
+];
 
 const productReachChartConfig = {
   reached: {
-    label: 'Reached',
-    color: 'var(--primary)',
+    label: "Reached",
+    color: "var(--primary)",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 // Order placed data
 const orderPlacedChartData = [
-  { month: 'January', orders: 168 },
-  { month: 'February', orders: 305 },
-  { month: 'March', orders: 213 },
-  { month: 'April', orders: 330 },
-  { month: 'May', orders: 305 },
-]
+  { month: "January", orders: 168 },
+  { month: "February", orders: 305 },
+  { month: "March", orders: 213 },
+  { month: "April", orders: 330 },
+  { month: "May", orders: 305 },
+];
 
 const orderPlacedChartConfig = {
   orders: {
-    label: 'Orders',
-    color: 'color-mix(in oklab, var(--primary) 10%, transparent)',
+    label: "Orders",
+    color: "color-mix(in oklab, var(--primary) 10%, transparent)",
   },
-} satisfies ChartConfig
+} satisfies ChartConfig;
 
 const ProductInsightsCard = ({ className }: { className?: string }) => {
   return (
-    <Card className={cn('gap-4', className)}>
+    <Card className={cn("gap-4", className)}>
       <CardHeader className="flex justify-between">
         <div className="flex flex-col gap-1">
           <span className="text-lg font-semibold">Product insight</span>
@@ -97,7 +98,7 @@ const ProductInsightsCard = ({ className }: { className?: string }) => {
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default ProductInsightsCard
+export default ProductInsightsCard;

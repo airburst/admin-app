@@ -2,37 +2,37 @@ import {
   ChevronDownIcon,
   ChevronUpIcon,
   EllipsisVerticalIcon,
-} from 'lucide-react'
+} from "lucide-react";
 
-import { Avatar, AvatarFallback } from '@/components/ui/avatar'
-import { Button } from '@/components/ui/button'
-import { Card, CardContent, CardHeader } from '@/components/ui/card'
+import { Avatar, AvatarFallback } from "@/components/ui/avatar";
+import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader } from "@/components/ui/card";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
-import { Progress } from '@/components/ui/progress'
+} from "@/components/ui/dropdown-menu";
+import { Progress } from "@/components/ui/progress";
 
-const listItems = ['Share', 'Update', 'Refresh']
+const listItems = ["Share", "Update", "Refresh"];
 
 type Props = {
-  title: string
-  earning: number
-  trend: 'up' | 'down'
-  percentage: number
-  comparisonText: string
-  earningData: {
-    img: string
-    platform: string
-    technologies: string
-    earnings: string
-    progressPercentage: number
-  }[]
-  className?: string
-}
+  title: string;
+  earning: number;
+  trend: "up" | "down";
+  percentage: number;
+  comparisonText: string;
+  earningData: Array<{
+    img: string;
+    platform: string;
+    technologies: string;
+    earnings: string;
+    progressPercentage: number;
+  }>;
+  className?: string;
+};
 
 const TotalEarningCard = ({
   earningData,
@@ -72,7 +72,7 @@ const TotalEarningCard = ({
           <div className="flex items-center gap-2">
             <span className="text-2xl font-semibold">${earning}</span>
             <span className="flex items-center gap-1">
-              {trend === 'up' ? (
+              {trend === "up" ? (
                 <ChevronUpIcon className="size-4" />
               ) : (
                 <ChevronDownIcon className="size-4" />
@@ -85,7 +85,7 @@ const TotalEarningCard = ({
           </span>
         </div>
         <div className="flex flex-1 flex-col justify-evenly gap-4">
-          {earningData.map((earning, index) => (
+          {earningData.map((item, index) => (
             <div
               key={index}
               className="flex items-center justify-between gap-2.5"
@@ -94,29 +94,29 @@ const TotalEarningCard = ({
                 <Avatar className="size-11 rounded-sm">
                   <AvatarFallback className="bg-primary/10 shrink-0 rounded-sm">
                     <img
-                      src={earning.img}
-                      alt={earning.platform}
+                      src={item.img}
+                      alt={item.platform}
                       className="size-6"
                     />
                   </AvatarFallback>
                 </Avatar>
                 <div className="flex flex-col gap-1">
-                  <span className="font-medium">{earning.platform}</span>
+                  <span className="font-medium">{item.platform}</span>
                   <span className="text-muted-foreground text-sm">
-                    {earning.technologies}
+                    {item.technologies}
                   </span>
                 </div>
               </div>
               <div className="space-y-2">
-                <p className="text-sm">{earning.earnings}</p>
-                <Progress value={earning.progressPercentage} className="w-36" />
+                <p className="text-sm">{item.earnings}</p>
+                <Progress value={item.progressPercentage} className="w-36" />
               </div>
             </div>
           ))}
         </div>
       </CardContent>
     </Card>
-  )
-}
+  );
+};
 
-export default TotalEarningCard
+export default TotalEarningCard;

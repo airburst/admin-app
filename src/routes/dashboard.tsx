@@ -1,8 +1,8 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from "@tanstack/react-router";
 
-import { DashboardLayout } from '@/components/dashboard/dashboard-layout'
+import { DashboardLayout } from "@/components/dashboard/dashboard-layout";
 
-export const Route = createFileRoute('/dashboard')({ component: Dashboard })
+export const Route = createFileRoute("/dashboard")({ component: Dashboard });
 
 // https://www.freecodecamp.org/news/build-an-admin-dashboard-with-shadcnui-and-tanstack-start/
 function Dashboard() {
@@ -10,5 +10,5 @@ function Dashboard() {
     <DashboardLayout>
       <Outlet />
     </DashboardLayout>
-  )
+  );
 }

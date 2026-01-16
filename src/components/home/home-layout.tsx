@@ -1,13 +1,13 @@
-import { type ReactNode } from 'react'
-import { Header } from '../header/header'
+import { Header } from "../header/header";
+import type { ReactNode } from "react";
 
 interface HomeLayoutProps {
-  children: ReactNode
+  children: ReactNode;
   breadcrumbs?: Array<{
-    label: string
-    href?: string
-    isCurrentPage?: boolean
-  }>
+    label: string;
+    href?: string;
+    isCurrentPage?: boolean;
+  }>;
 }
 
 export function HomeLayout({ children, breadcrumbs }: HomeLayoutProps) {
@@ -20,5 +20,5 @@ export function HomeLayout({ children, breadcrumbs }: HomeLayoutProps) {
         </main>
       </div>
     </div>
-  )
+  );
 }

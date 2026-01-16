@@ -2,7 +2,7 @@ import {
   ChartNoAxesCombinedIcon,
   ChartSplineIcon,
   UsersIcon,
-} from 'lucide-react'
+} from "lucide-react";
 
 import {
   Sidebar,
@@ -14,37 +14,37 @@ import {
   SidebarMenuBadge,
   SidebarMenuButton,
   SidebarMenuItem,
-} from '@/components/ui/sidebar'
+} from "@/components/ui/sidebar";
 
 type MenuItem = {
-  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
-  label: string
-  href: string
-  badge?: number
-}
+  icon: React.ComponentType<React.SVGProps<SVGSVGElement>>;
+  label: string;
+  href: string;
+  badge?: number;
+};
 
-const mainMenuItems: MenuItem[] = [
+const mainMenuItems: Array<MenuItem> = [
   {
     icon: ChartNoAxesCombinedIcon,
-    label: 'Dashboard',
-    href: '#',
+    label: "Dashboard",
+    href: "#",
     // badge: 5,
   },
-]
+];
 
-const pagesMenuItems: MenuItem[] = [
+const pagesMenuItems: Array<MenuItem> = [
   {
     icon: ChartSplineIcon,
-    label: 'Dashboard',
-    href: '/dashboard',
+    label: "Dashboard",
+    href: "/dashboard",
   },
   {
     icon: UsersIcon,
-    label: 'Manage Users',
-    href: '#',
+    label: "Manage Users",
+    href: "#",
     badge: 3,
   },
-]
+];
 
 export function DashboardSidebar() {
   return (
@@ -96,5 +96,5 @@ export function DashboardSidebar() {
         </SidebarGroup>
       </SidebarContent>
     </Sidebar>
-  )
+  );
 }

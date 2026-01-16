@@ -1,16 +1,15 @@
-import type { ReactNode } from 'react'
-
 import {
-  UserIcon,
-  SettingsIcon,
-  CreditCardIcon,
-  UsersIcon,
-  SquarePenIcon,
   CirclePlusIcon,
+  CreditCardIcon,
   LogOutIcon,
-} from 'lucide-react'
+  SettingsIcon,
+  SquarePenIcon,
+  UserIcon,
+  UsersIcon,
+} from "lucide-react";
+import type { ReactNode } from "react";
 
-import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -19,19 +18,19 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu";
 
 type Props = {
-  trigger: ReactNode
-  defaultOpen?: boolean
-  align?: 'start' | 'center' | 'end'
-}
+  trigger: ReactNode;
+  defaultOpen?: boolean;
+  align?: "start" | "center" | "end";
+};
 
-const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
+const ProfileDropdown = ({ trigger, defaultOpen, align = "end" }: Props) => {
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
-      <DropdownMenuContent className="w-80" align={align || 'end'}>
+      <DropdownMenuContent className="w-80" align={align}>
         <DropdownMenuLabel className="flex items-center gap-4 px-4 py-2.5 font-normal">
           <div className="relative">
             <Avatar className="size-10">
@@ -98,7 +97,7 @@ const ProfileDropdown = ({ trigger, defaultOpen, align = 'end' }: Props) => {
         </DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
-}
+  );
+};
 
-export default ProfileDropdown
+export default ProfileDropdown;

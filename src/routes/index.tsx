@@ -1,8 +1,7 @@
-import { createFileRoute, Outlet } from '@tanstack/react-router'
+import { Outlet, createFileRoute } from "@tanstack/react-router";
+import { HomeLayout } from "@/components/home/home-layout";
 
-import { HomeLayout } from '@/components/home/home-layout'
-
-export const Route = createFileRoute('/')({ component: Home })
+export const Route = createFileRoute("/")({ component: Home });
 
 function Home() {
   return (
@@ -10,5 +9,5 @@ function Home() {
       <Outlet />
       <div className="grid grid-cols-2 gap-6 lg:grid-cols-3">Hello</div>
     </HomeLayout>
-  )
+  );
 }

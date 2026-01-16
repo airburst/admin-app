@@ -1,16 +1,16 @@
-import { type ReactNode } from 'react'
-import { SidebarProvider } from '@/components/ui/sidebar'
-import { DashboardSidebar } from './dashboard-sidebar'
-import { DashboardFooter } from './dashboard-footer'
-import { Header } from '../header/header'
+import { Header } from "../header/header";
+import { DashboardSidebar } from "./dashboard-sidebar";
+import { DashboardFooter } from "./dashboard-footer";
+import type { ReactNode } from "react";
+import { SidebarProvider } from "@/components/ui/sidebar";
 
 interface DashboardLayoutProps {
-  children: ReactNode
+  children: ReactNode;
   breadcrumbs?: Array<{
-    label: string
-    href?: string
-    isCurrentPage?: boolean
-  }>
+    label: string;
+    href?: string;
+    isCurrentPage?: boolean;
+  }>;
 }
 
 export function DashboardLayout({
@@ -30,5 +30,5 @@ export function DashboardLayout({
         </div>
       </SidebarProvider>
     </div>
-  )
+  );
 }

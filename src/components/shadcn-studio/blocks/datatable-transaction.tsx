@@ -1,14 +1,13 @@
-'use client'
+"use client";
 
-import { useState } from 'react'
+import { useState } from "react";
 
 import {
   ChevronLeftIcon,
   ChevronRightIcon,
   EllipsisVerticalIcon,
-} from 'lucide-react'
+} from "lucide-react";
 
-import type { ColumnDef, PaginationState } from '@tanstack/react-table'
 import {
   flexRender,
   getCoreRowModel,
@@ -16,24 +15,25 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   useReactTable,
-} from '@tanstack/react-table'
+} from "@tanstack/react-table";
+import type { ColumnDef, PaginationState } from "@tanstack/react-table";
 
-import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar'
-import { Badge } from '@/components/ui/badge'
-import { Button } from '@/components/ui/button'
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuGroup,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from '@/components/ui/dropdown-menu'
+} from "@/components/ui/dropdown-menu";
 import {
   Pagination,
   PaginationContent,
   PaginationEllipsis,
   PaginationItem,
-} from '@/components/ui/pagination'
+} from "@/components/ui/pagination";
 import {
   Table,
   TableBody,
@@ -41,25 +41,25 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from '@/components/ui/table'
+} from "@/components/ui/table";
 
-import { usePagination } from '@/hooks/use-pagination'
+import { usePagination } from "@/hooks/use-pagination";
 
 export type Item = {
-  id: string
-  avatar: string
-  avatarFallback: string
-  name: string
-  email: string
-  amount: number
-  status: 'pending' | 'processing' | 'paid' | 'failed'
-  paidBy: 'mastercard' | 'visa'
-}
+  id: string;
+  avatar: string;
+  avatarFallback: string;
+  name: string;
+  email: string;
+  amount: number;
+  status: "pending" | "processing" | "paid" | "failed";
+  paidBy: "mastercard" | "visa";
+};
 
-export const columns: ColumnDef<Item>[] = [
+export const columns: Array<ColumnDef<Item>> = [
   {
-    accessorKey: 'name',
-    header: 'Customer',
+    accessorKey: "name",
+    header: "Customer",
     cell: ({ row }) => (
       <div className="flex items-center gap-2">
         <Avatar className="size-9">
@@ -70,7 +70,7 @@ export const columns: ColumnDef<Item>[] = [
         </Avatar>
         <div className="flex flex-col text-sm">
           <span className="text-card-foreground font-medium">
-            {row.getValue('name')}
+            {row.getValue("name")}
           </span>
           <span className="text-muted-foreground">{row.original.email}</span>
         </div>
@@ -78,37 +78,37 @@ export const columns: ColumnDef<Item>[] = [
     ),
   },
   {
-    accessorKey: 'amount',
-    header: 'Amount',
+    accessorKey: "amount",
+    header: "Amount",
     cell: ({ row }) => {
-      const amount = parseFloat(row.getValue('amount'))
+      const amount = parseFloat(row.getValue("amount"));
 
-      const formatted = new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(amount)
+      const formatted = new Intl.NumberFormat("en-US", {
+        style: "currency",
+        currency: "USD",
+      }).format(amount);
 
-      return <span>{formatted}</span>
+      return <span>{formatted}</span>;
     },
   },
   {
-    accessorKey: 'status',
-    header: 'Status',
+    accessorKey: "status",
+    header: "Status",
     cell: ({ row }) => (
       <Badge className="bg-primary/10 text-primary rounded-sm px-1.5 capitalize">
-        {row.getValue('status')}
+        {row.getValue("status")}
       </Badge>
     ),
   },
   {
-    accessorKey: 'paidBy',
+    accessorKey: "paidBy",
     header: () => <span className="w-fit">Paid by</span>,
     cell: ({ row }) => (
       <img
         src={
-          row.getValue('paidBy') === 'mastercard'
-            ? 'https://cdn.shadcnstudio.com/ss-assets/blocks/data-table/image-1.png'
-            : 'https://cdn.shadcnstudio.com/ss-assets/blocks/data-table/image-2.png'
+          row.getValue("paidBy") === "mastercard"
+            ? "https://cdn.shadcnstudio.com/ss-assets/blocks/data-table/image-1.png"
+            : "https://cdn.shadcnstudio.com/ss-assets/blocks/data-table/image-2.png"
         }
         alt="Payment platform"
         className="w-10.5"
@@ -116,21 +116,21 @@ export const columns: ColumnDef<Item>[] = [
     ),
   },
   {
-    id: 'actions',
-    header: () => 'Actions',
+    id: "actions",
+    header: () => "Actions",
     cell: () => <RowActions />,
     size: 60,
     enableHiding: false,
   },
-]
+];
 
-const TransactionDatatable = ({ data }: { data: Item[] }) => {
-  const pageSize = 5
+const TransactionDatatable = ({ data }: { data: Array<Item> }) => {
+  const pageSize = 5;
 
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: 0,
     pageSize: pageSize,
-  })
+  });
 
   const table = useReactTable({
     data,
@@ -143,13 +143,13 @@ const TransactionDatatable = ({ data }: { data: Item[] }) => {
     state: {
       pagination,
     },
-  })
+  });
 
   const { pages, showLeftEllipsis, showRightEllipsis } = usePagination({
     currentPage: table.getState().pagination.pageIndex + 1,
     totalPages: table.getPageCount(),
     paginationItemsToDisplay: 2,
-  })
+  });
 
   return (
     <div className="w-full">
@@ -171,17 +171,17 @@ const TransactionDatatable = ({ data }: { data: Item[] }) => {
                             header.getContext(),
                           )}
                     </TableHead>
-                  )
+                  );
                 })}
               </TableRow>
             ))}
           </TableHeader>
           <TableBody>
-            {table.getRowModel().rows?.length ? (
+            {table.getRowModel().rows.length ? (
               table.getRowModel().rows.map((row) => (
                 <TableRow
                   key={row.id}
-                  data-state={row.getIsSelected() && 'selected'}
+                  data-state={row.getIsSelected() && "selected"}
                 >
                   {row.getVisibleCells().map((cell) => (
                     <TableCell key={cell.id} className="first:pl-4">
@@ -212,12 +212,12 @@ const TransactionDatatable = ({ data }: { data: Item[] }) => {
           className="text-muted-foreground text-sm whitespace-nowrap"
           aria-live="polite"
         >
-          Showing{' '}
+          Showing{" "}
           <span>
             {table.getState().pagination.pageIndex *
               table.getState().pagination.pageSize +
-              1}{' '}
-            to{' '}
+              1}{" "}
+            to{" "}
             {Math.min(
               Math.max(
                 table.getState().pagination.pageIndex *
@@ -227,7 +227,7 @@ const TransactionDatatable = ({ data }: { data: Item[] }) => {
               ),
               table.getRowCount(),
             )}
-          </span>{' '}
+          </span>{" "}
           of <span>{table.getRowCount().toString()} entries</span>
         </p>
 
@@ -237,7 +237,7 @@ const TransactionDatatable = ({ data }: { data: Item[] }) => {
               <PaginationItem>
                 <Button
                   className="disabled:pointer-events-none disabled:opacity-50"
-                  variant={'ghost'}
+                  variant={"ghost"}
                   onClick={() => table.previousPage()}
                   disabled={!table.getCanPreviousPage()}
                   aria-label="Go to previous page"
@@ -255,20 +255,20 @@ const TransactionDatatable = ({ data }: { data: Item[] }) => {
 
               {pages.map((page) => {
                 const isActive =
-                  page === table.getState().pagination.pageIndex + 1
+                  page === table.getState().pagination.pageIndex + 1;
 
                 return (
                   <PaginationItem key={page}>
                     <Button
                       size="icon"
-                      className={`${!isActive && 'bg-primary/10 text-primary hover:bg-primary/20 focus-visible:ring-primary/20 dark:focus-visible:ring-primary/40'}`}
+                      className={`${!isActive && "bg-primary/10 text-primary hover:bg-primary/20 focus-visible:ring-primary/20 dark:focus-visible:ring-primary/40"}`}
                       onClick={() => table.setPageIndex(page - 1)}
-                      aria-current={isActive ? 'page' : undefined}
+                      aria-current={isActive ? "page" : undefined}
                     >
                       {page}
                     </Button>
                   </PaginationItem>
-                )
+                );
               })}
 
               {showRightEllipsis && (
@@ -280,7 +280,7 @@ const TransactionDatatable = ({ data }: { data: Item[] }) => {
               <PaginationItem>
                 <Button
                   className="disabled:pointer-events-none disabled:opacity-50"
-                  variant={'ghost'}
+                  variant={"ghost"}
                   onClick={() => table.nextPage()}
                   disabled={!table.getCanNextPage()}
                   aria-label="Go to next page"
@@ -294,10 +294,10 @@ const TransactionDatatable = ({ data }: { data: Item[] }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default TransactionDatatable
+export default TransactionDatatable;
 
 function RowActions() {
   return (
@@ -328,5 +328,5 @@ function RowActions() {
         </DropdownMenuGroup>
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }
