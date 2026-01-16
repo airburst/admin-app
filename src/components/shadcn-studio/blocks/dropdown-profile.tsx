@@ -8,6 +8,7 @@ import {
   UsersIcon,
 } from "lucide-react";
 import type { ReactNode } from "react";
+import { useNavigate } from "@tanstack/react-router";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import {
@@ -27,6 +28,13 @@ type Props = {
 };
 
 const ProfileDropdown = ({ trigger, defaultOpen, align = "end" }: Props) => {
+  const navigate = useNavigate();
+
+  const handleLogout = () => {
+    localStorage.removeItem("authenticated");
+    navigate({ to: "/" });
+  };
+
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
       <DropdownMenuTrigger asChild>{trigger}</DropdownMenuTrigger>
@@ -91,6 +99,7 @@ const ProfileDropdown = ({ trigger, defaultOpen, align = "end" }: Props) => {
         <DropdownMenuItem
           variant="destructive"
           className="px-4 py-2.5 text-base"
+          onClick={handleLogout}
         >
           <LogOutIcon className="size-5" />
           <span>Logout</span>

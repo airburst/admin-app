@@ -1,13 +1,7 @@
 # TODO
 
-## Tooling
-
-- linting
-- format on save
-
 ## Structure
 
-- Create shared header and footer components for all layouts
 - Dynamic breadcrumbs, with real links
 
 ## Content
@@ -17,3 +11,8 @@
 ## Auth
 
 - setup better-auth
+- add "remember me" behaviour to login form
+
+## Logos
+
+- Replace public 192 and 512 logos
