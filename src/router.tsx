@@ -9,6 +9,11 @@ export const getRouter = () => {
     routeTree,
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    // Prevent layout flash during route transitions
+    defaultPendingMs: 0,
+    defaultPendingMinMs: 0,
+    // Use View Transitions API for smoother navigation
+    defaultViewTransition: true,
   });
 
   return router;

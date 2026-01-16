@@ -11,6 +11,7 @@
 - protect routes and redirect to login
 - SSO?
 
-## Logos
+## Cosmetics
 
+- Theme and user icons in header flash when route changes
 - Replace public 192 and 512 logos

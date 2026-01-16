@@ -3,7 +3,6 @@ import { StatisticsSection } from "@/components/dashboard/sections/statistics-se
 import { ProductInsightsSection } from "@/components/dashboard/sections/product-insights-section";
 import { TotalEarningsSection } from "@/components/dashboard/sections/total-earnings-section";
 import { SalesMetricsSection } from "@/components/dashboard/sections/sales-metrics-section";
-import { TransactionsSection } from "@/components/dashboard/sections/transactions-section";
 
 export const Route = createFileRoute("/dashboard/")({
   component: DashboardHome,
@@ -20,7 +19,6 @@ function DashboardHome() {
       </div>
 
       <SalesMetricsSection />
-      <TransactionsSection />
     </div>
   );
 }

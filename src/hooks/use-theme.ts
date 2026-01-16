@@ -3,16 +3,24 @@ import { useCallback, useEffect, useState } from "react";
 type Theme = "light" | "dark";
 
 export function useTheme() {
-  const [theme, setTheme] = useState<Theme>(() => {
-    if (typeof window === "undefined") return "light";
-    const stored = localStorage.getItem("theme") as Theme | null;
-    if (stored) return stored;
-    return window.matchMedia("(prefers-color-scheme: dark)").matches
-      ? "dark"
-      : "light";
-  });
+  const [theme, setTheme] = useState<Theme | null>(null);
 
+  // Read theme from localStorage after mount to avoid hydration mismatch
   useEffect(() => {
+    const stored = localStorage.getItem("theme") as Theme | null;
+    if (stored) {
+      setTheme(stored);
+    } else {
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)",
+      ).matches;
+      setTheme(prefersDark ? "dark" : "light");
+    }
+  }, []);
+
+  // Apply theme to document
+  useEffect(() => {
+    if (!theme) return;
     const root = document.documentElement;
     if (theme === "dark") {
       root.classList.add("dark");

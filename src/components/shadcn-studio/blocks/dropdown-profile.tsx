@@ -1,3 +1,4 @@
+import { memo, useCallback } from "react";
 import {
   CirclePlusIcon,
   CreditCardIcon,
@@ -7,7 +8,7 @@ import {
   UserIcon,
   UsersIcon,
 } from "lucide-react";
-import { useNavigate } from "@tanstack/react-router";
+import { useRouter } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -27,13 +28,17 @@ type Props = {
   align?: "start" | "center" | "end";
 };
 
-const ProfileDropdown = ({ trigger, defaultOpen, align = "end" }: Props) => {
-  const navigate = useNavigate();
+const ProfileDropdown = memo(function ProfileDropdown({
+  trigger,
+  defaultOpen,
+  align = "end",
+}: Props) {
+  const router = useRouter();
 
-  const handleLogout = () => {
+  const handleLogout = useCallback(() => {
     localStorage.removeItem("authenticated");
-    navigate({ to: "/" });
-  };
+    router.navigate({ to: "/" });
+  }, [router]);
 
   return (
     <DropdownMenu defaultOpen={defaultOpen}>
@@ -107,6 +112,6 @@ const ProfileDropdown = ({ trigger, defaultOpen, align = "end" }: Props) => {
       </DropdownMenuContent>
     </DropdownMenu>
   );
-};
+});
 
 export default ProfileDropdown;

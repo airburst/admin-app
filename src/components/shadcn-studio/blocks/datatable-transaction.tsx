@@ -51,9 +51,7 @@ export type Item = {
   avatarFallback: string;
   name: string;
   email: string;
-  amount: number;
-  status: "pending" | "processing" | "paid" | "failed";
-  paidBy: "mastercard" | "visa";
+  role: "Agent" | "Admin" | "Super Admin";
 };
 
 export const columns: Array<ColumnDef<Item>> = [
@@ -78,41 +76,12 @@ export const columns: Array<ColumnDef<Item>> = [
     ),
   },
   {
-    accessorKey: "amount",
-    header: "Amount",
-    cell: ({ row }) => {
-      const amount = parseFloat(row.getValue("amount"));
-
-      const formatted = new Intl.NumberFormat("en-US", {
-        style: "currency",
-        currency: "USD",
-      }).format(amount);
-
-      return <span>{formatted}</span>;
-    },
-  },
-  {
-    accessorKey: "status",
-    header: "Status",
+    accessorKey: "role",
+    header: "Role",
     cell: ({ row }) => (
       <Badge className="bg-primary/10 text-primary rounded-sm px-1.5 capitalize">
-        {row.getValue("status")}
+        {row.getValue("role")}
       </Badge>
-    ),
-  },
-  {
-    accessorKey: "paidBy",
-    header: () => <span className="w-fit">Paid by</span>,
-    cell: ({ row }) => (
-      <img
-        src={
-          row.getValue("paidBy") === "mastercard"
-            ? "https://cdn.shadcnstudio.com/ss-assets/blocks/data-table/image-1.png"
-            : "https://cdn.shadcnstudio.com/ss-assets/blocks/data-table/image-2.png"
-        }
-        alt="Payment platform"
-        className="w-10.5"
-      />
     ),
   },
   {

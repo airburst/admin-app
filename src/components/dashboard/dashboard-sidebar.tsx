@@ -41,8 +41,8 @@ const pagesMenuItems: Array<MenuItem> = [
   {
     icon: UsersIcon,
     label: "Manage Users",
-    href: "#",
-    badge: 3,
+    href: "/dashboard/users",
+    // badge: 3,
   },
 ];
 
