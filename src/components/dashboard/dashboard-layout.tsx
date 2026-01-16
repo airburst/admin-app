@@ -10,12 +10,12 @@ interface DashboardLayoutProps {
 
 export function DashboardLayout({ children }: DashboardLayoutProps) {
   return (
-    <div className="flex w-full">
+    <div className="flex h-[calc(100dvh-56px)] w-full">
       <SidebarProvider>
         <DashboardSidebar />
-        <div className="flex flex-1 flex-col">
+        <div className="flex flex-1 flex-col overflow-hidden">
           <DashboardHeader />
-          <main className="mx-auto size-full max-w-7xl flex-1 px-4 py-6 sm:px-6">
+          <main className="mx-auto w-full max-w-7xl flex-1 overflow-y-auto px-4 py-6 sm:px-6">
             {children}
           </main>
           <DashboardFooter />

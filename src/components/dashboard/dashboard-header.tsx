@@ -17,7 +17,7 @@ export function DashboardHeader() {
   const breadcrumbs = useMemo(() => generateBreadcrumbs(pathname), [pathname]);
 
   return (
-    <div className="flex items-center gap-4 border-b px-4 py-2 sm:px-6">
+    <div className="bg-background flex items-center gap-4 border-b px-4 py-2 sm:px-6">
       <SidebarTrigger className="[&_svg]:size-5!" />
       <Breadcrumb className="hidden sm:block">
         <BreadcrumbList>

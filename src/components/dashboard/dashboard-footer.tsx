@@ -7,7 +7,7 @@ export function DashboardFooter() {
         <p className="text-sm text-balance max-sm:text-center">
           ©{currentYear}{" "}
           <a href="#" className="text-primary">
-            SimplyBusiness
+            Company
           </a>
         </p>
         <div className="flex items-center gap-5"></div>
