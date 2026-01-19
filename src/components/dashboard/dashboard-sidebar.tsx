@@ -1,6 +1,7 @@
 import {
   ChartNoAxesCombinedIcon,
   ChartSplineIcon,
+  UploadIcon,
   UsersIcon,
 } from "lucide-react";
 
@@ -43,6 +44,11 @@ const pagesMenuItems: Array<MenuItem> = [
     label: "Manage Users",
     href: "/dashboard/users",
     // badge: 3,
+  },
+  {
+    icon: UploadIcon,
+    label: "Upload data",
+    href: "/dashboard/upload",
   },
 ];
 
