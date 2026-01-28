@@ -1,8 +1,7 @@
 import * as React from "react";
-import { Slot } from "radix-ui";
 
 import { ChevronRightIcon, MoreHorizontalIcon } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Slot, cn } from "@/lib/utils";
 
 function Breadcrumb({ className, ...props }: React.ComponentProps<"nav">) {
   return (
@@ -45,7 +44,7 @@ function BreadcrumbLink({
 }: React.ComponentProps<"a"> & {
   asChild?: boolean;
 }) {
-  const Comp = asChild ? Slot.Root : "a";
+  const Comp = asChild ? Slot : "a";
 
   return (
     <Comp
