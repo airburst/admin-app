@@ -43,10 +43,18 @@ function RootComponent() {
   );
 }
 
+const themeInitScript = `(function(){try{var t=localStorage.getItem('theme');var d=t==='dark'||(!t&&window.matchMedia('(prefers-color-scheme: dark)').matches);var c=document.documentElement.classList;d?c.add('dark'):c.remove('dark');}catch(e){}})();`;
+
+// Inline so icon visibility is decided before the main stylesheet loads
+// (Vite dev injects CSS via JS, which leaves a brief flash window).
+const themeIconStyle = `[data-theme-icon="dark"]{display:none}.dark [data-theme-icon="light"]{display:none}.dark [data-theme-icon="dark"]{display:revert}`;
+
 function RootDocument({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en" suppressHydrationWarning>
       <head>
+        <style dangerouslySetInnerHTML={{ __html: themeIconStyle }} />
+        <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <HeadContent />
       </head>
       <body>
